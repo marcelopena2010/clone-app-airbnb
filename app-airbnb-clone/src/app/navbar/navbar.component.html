@@ -1,19 +1,32 @@
 <nav class="navbar">
   <div class="container">
-    <a class="navbar-brand" href="#">Brand</a>
+    <div class="navbar-brand logo-container">
+      <img src="../../assets/logo.png">
+    </div>
+    <div class="button-row">
+      <app-buttons-stays></app-buttons-stays>
+      <app-buttons-experiences></app-buttons-experiences>
+    </div>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <div class="button-row">
+          <app-buttons-yourhome></app-buttons-yourhome>
+        </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <div class="button-row">
+          <app-buttons-icones></app-buttons-icones>
+        </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <div class="button-row">
+          <app-buttons-logins></app-buttons-logins>
+        </div>
       </li>
     </ul>
   </div>
+  <div>
+    <app-buttons-search></app-buttons-search>
+  </div>
 </nav>
+<mat-divider></mat-divider>

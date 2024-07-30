@@ -1,0 +1,18 @@
+<button mat-stroked-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+    <img
+        src="https://mdbootstrap.com/img/Photos/Avatars/img (31).webp"
+        class="rounded-circle"
+        height="22"
+        alt=""
+        loading="lazy"
+    />
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Sign up</button>
+  <button mat-menu-item>Log in</button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>Gift cards</button>
+  <button mat-menu-item>Airbnb your home</button>
+  <button mat-menu-item>Help center</button>
+</mat-menu>
