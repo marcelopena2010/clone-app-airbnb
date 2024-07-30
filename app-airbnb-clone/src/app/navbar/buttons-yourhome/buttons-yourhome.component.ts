@@ -3,15 +3,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-buttons-stays',
+  selector: 'app-buttons-yourhome',
   standalone: true,
   imports: [ 
     MatButtonModule, 
     MatIconModule
   ],
-  templateUrl: './buttons-stays.component.html',
-  styleUrl: './buttons-stays.component.scss'
+  templateUrl: './buttons-yourhome.component.html',
+  styleUrl: './buttons-yourhome.component.scss'
 })
-export class ButtonsStaysComponent {
+export class ButtonsYourhomeComponent {
 
 }
