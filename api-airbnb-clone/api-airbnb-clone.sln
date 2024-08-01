@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api-airbnb-clone", "api-airbnb-clone.csproj", "{08E9CA91-DDD1-4B45-98F8-FA868C2455B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api-airbnb-clone", "api-airbnb-clone.csproj", "{AD69EF55-5884-4EB3-B6AE-B3C90EAA3F93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{938D0D7F-4027-4542-A7F2-4DDD242157C3}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +16,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{08E9CA91-DDD1-4B45-98F8-FA868C2455B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08E9CA91-DDD1-4B45-98F8-FA868C2455B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08E9CA91-DDD1-4B45-98F8-FA868C2455B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08E9CA91-DDD1-4B45-98F8-FA868C2455B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD69EF55-5884-4EB3-B6AE-B3C90EAA3F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD69EF55-5884-4EB3-B6AE-B3C90EAA3F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD69EF55-5884-4EB3-B6AE-B3C90EAA3F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD69EF55-5884-4EB3-B6AE-B3C90EAA3F93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8D948C30-9510-45F4-90AC-F2FC89796766}
+		SolutionGuid = {E4F1F2D3-0F4D-4F33-823C-2BDED6171FFB}
 	EndGlobalSection
 EndGlobal

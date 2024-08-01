@@ -1,9 +1,12 @@
-﻿namespace api_airbnb_clone.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace api_airbnb_clone.Models
 {
     public class Icons
     {
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IconsId { get; set; }
         public string IconsName { get; set; }
-        public string IconsDesigns { get; set; }
+        public string IconsDesign { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace api_airbnb_clone.Models
 {
-    public class AddUpdateIcons
+    public class UpdateIconsRequest
     {
         public string IconsName { get; set; }
-        public string IconsDesigns { get; set; }
+        public string IconsDesign { get; set; }
     }
 }

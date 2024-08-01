@@ -1,16 +1,16 @@
-using api_airbnb_clone.Services;
+using api_airbnb_clone.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//*********************** Add services to the container.***********************
-builder.Services.AddSingleton<IIconsService, IconsService>();
-//*********************** Add services to the container end.***********************
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<IconsDBContext>(option =>
+    option.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
 var app = builder.Build();
 

@@ -1,88 +1,100 @@
-﻿using api_airbnb_clone.Models;
-using api_airbnb_clone.Services;
+﻿using api_airbnb_clone.Data;
+using api_airbnb_clone.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace api_airbnb_clone.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IconsController : ControllerBase
+    public class IconsController : Controller
     {
-        private readonly IIconsService _iconService;
-
-        public IconsController(IIconsService iconService)
-        {
-            _iconService = iconService;
+        private IconsDBContext contexto;
+        public IconsController(IconsDBContext contexto) 
+        { 
+            this.contexto = contexto;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetIcons()
         {
-            return Ok(_iconService.GetAllIcons());
-        }
-
-        [HttpGet]
-        [Route("{id}")]
-        public IActionResult Get(int id)
-        {
-            var icon = _iconService.GetIconsByID(id);
-            if (icon == null)
+            var icons = await contexto.Icones.ToListAsync();
+            if (icons == null)
             {
                 return NotFound();
             }
-            return Ok(icon);
+            return Ok(icons);
         }
 
         [HttpPost]
-        public IActionResult Post(AddUpdateIcons iconObject)
+        public async Task<IActionResult> AddIcons(List<AddIconsRequest> addIconsRequests)
         {
-            var icon = _iconService.AddIcons(iconObject);
+            var iconsList = new List<Icons>();
 
-            if (icon == null)
+            foreach (var addIconsRequest in addIconsRequests)
             {
-                return BadRequest();
+                var icons = new Icons()
+                {
+                    IconsName = addIconsRequest.IconsName,
+                    IconsDesign = addIconsRequest.IconsDesign
+                };
+
+                iconsList.Add(icons);
             }
 
-            return Ok(new
+            await contexto.Icones.AddRangeAsync(iconsList);
+            await contexto.SaveChangesAsync();
+
+            return Ok(iconsList);
+
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetIconsById(int id)
+        {
+            var icons = await contexto.Icones.FindAsync(id);
+
+            if (icons == null)
             {
-                message = "Criado Icons com Sucesso!!!",
-                id = icon!.Id
-            });
+                return NotFound();
+            }
+            return Ok(icons);
         }
 
         [HttpPut]
-        [Route("{id}")]
-        public IActionResult Put([FromRoute] int id, [FromBody] AddUpdateIcons iconObject)
+        [Route("{id:int}")]
+        public async Task<IActionResult> UpdateIcons(int id, UpdateIconsRequest updateIconsRequest)
         {
-            var icon = _iconService.UpdateIcons(id, iconObject);
-            if (icon == null)
+            var icons = await contexto.Icones.FindAsync(id);
+
+            if (icons == null)
             {
                 return NotFound();
             }
 
-            return Ok(new
-            {
-                message = "Atualizado Icons com Sucesso!!!",
-                id = icon!.Id
-            });
+            icons.IconsName = updateIconsRequest.IconsName;
+            icons.IconsDesign = updateIconsRequest.IconsDesign;
+
+            await contexto.SaveChangesAsync();
+
+            return Ok(icons);
         }
 
         [HttpDelete]
-        [Route("{id}")]
-        public IActionResult Delete([FromRoute] int id)
-        {
-            if (!_iconService.DeleteIconsByID(id))
+        [Route("{id:int}")]
+        public async Task<IActionResult> DeleteIcons(int id) 
+        { 
+            var icons = await contexto.Icones.FindAsync(id);
+            if( icons != null)
             {
-                return NotFound();
+                contexto.Remove(icons);
+                await contexto.SaveChangesAsync();
+                return Ok(icons);
             }
-
-            return Ok(new
-            {
-                message = "Deletado Icons com Sucesso!!!",
-                id = id
-            });
+            return NotFound();
         }
-
     }
 }
