@@ -18,3 +18,9 @@ ng generate component "nome do componente"
 #Criar esse codigo
 ng generate component "nome do componente" --standalone
 
+#MIGRAÇÂO
+dotnet ef migrations remove
+dotnet ef database update
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
